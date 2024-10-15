@@ -4,9 +4,10 @@ str2 = ''
 
 list_of_nums = '0123456789'
 
-for item in list:
+for item in str:
     if item in list_of_nums:
         str2 += '(ЦИФРА)'
     else:
         str2 += item
+        
 print(str2)
