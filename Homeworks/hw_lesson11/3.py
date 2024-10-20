@@ -4,15 +4,14 @@
 
 str = input("Введіть рядок:\n")
 
-list = list(str)
+list = []
 list_of_denied_chars = [',', '.', '?', '!']
-new_list = []
 
-for item in list:
+for item in str:
     if item not in list_of_denied_chars:
-        new_list.append(item)
+        list.append(item)
       
-new_list = ''.join(new_list).split()
+list = ''.join(list).split()
 
 
-print(new_list)
+print(list)
