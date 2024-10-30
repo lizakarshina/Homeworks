@@ -50,7 +50,7 @@ random_letter = random.choice(word)
 
 
 while random_letter == first_letter or random_letter == last_letter:
-    random_letter = random.choice(words[word])
+    random_letter = random.choice(word)
 
 
 print("Комп'ютер загадав слово (їжа). Спробуйте його відгадати!")
