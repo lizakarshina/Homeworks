@@ -4,14 +4,14 @@
 # хоче купити користувач. Вивести на екран True, якщо користувач
 # може купити цей товар, якщо ні — False.
 
-stock = {"Клавіатура": 2, "Комп'ютерна миша": 3, "Монітор": 0}
+stock = {"Клавіатура": 2, "Комп'ютерна миша": 3, "Монітор": 0, "Клавіатура рожева": 1}
 
 choice = input("Що ви хочете придбати?\n")
 
 for key, val in stock.items():
     if key.lower() == choice.lower() and val > 0:
-        print(key, val)
+        print('True')
 
     if key.lower() == choice.lower() and val <= 0:
-        print("takogo nema")
+        print('False')
         break

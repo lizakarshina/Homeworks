@@ -39,7 +39,7 @@ words = {
 words_keys = [word for word in words.keys()]
 
 
-word = random.choice(words_keys)
+word = 'банан'
 attempts = 0  # Лічильник спроб
 
 
