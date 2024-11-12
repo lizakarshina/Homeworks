@@ -11,11 +11,12 @@ orders = {}
 # day = input("В який день?")
 
 
-def create_order(dict, name, day, time, count=2):
-    is_true = dict.get(name, -1)
-
+def create_order(name, day, time, count=2):
+    global orders
+    
+    is_true = orders.get(name, -1)
     if is_true == -1:
-        dict[name] = {
+        orders[name] = {
             0: {
                 "id": 0,
                 "clients": count,
@@ -24,17 +25,15 @@ def create_order(dict, name, day, time, count=2):
             }
         }
     else:
-        id = list(dict[name].keys())[-1]
-        dict[name][id + 1] = {
+        id = list(orders[name].keys())[-1]
+        orders[name][id + 1] = {
             "id": id + 1,
             "clients": count,
             "day": day,
             "time": time,
         }
-    print("Done")
 
-
-create_order(orders, "Олександр", "Четвер", "18:00", 2)
-create_order(orders, "Олександр", "Четвер", "18:00", 4)
+create_order("Олександр", "Четвер", "18:00", 2)
+create_order("Олександр", "Четвер", "18:00", 4)
 
 print(orders)
