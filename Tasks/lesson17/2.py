@@ -18,10 +18,10 @@ def subscription(email, last_name, sub_news=True, sub_changes=True, advers=True)
     global subs_users
 
     subs_users[email] = {
-        "last_name": last_name,
-        "subs_news": sub_news,
-        "sub_changes": sub_changes,
-        "advers": advers,
+        'last_name': last_name,
+        'subs_news': sub_news,
+        'sub_changes': sub_changes,
+        'advers': advers,
     }
 
     is_all_true = sub_news and sub_changes and advers
@@ -29,27 +29,27 @@ def subscription(email, last_name, sub_news=True, sub_changes=True, advers=True)
 
     if is_all_true:
         print(
-            f"Ви ({last_name}) підписалися на всі існуючі розсилки які можна, тепер ваша пошта не буде відпочивати 😘\n"
+            f'Ви ({last_name}) підписалися на всі існуючі розсилки які можна, тепер ваша пошта не буде відпочивати 😘\n'
         )
     else:
 
         if sub_news:
             print(
-                f"Ви ({last_name}) підписалися на останні новини 😘",
+                f'Ви ({last_name}) підписалися на останні новини 😘',
             )
 
         if sub_changes:
             print(
-                f"Ви ({last_name}) підписалися на чендж лог нових оновлень 😘",
+                f'Ви ({last_name}) підписалися на чендж лог нових оновлень 😘',
             )
 
         if advers:
             print(
-                f"Ви ({last_name}) підписалися на рекламну розсилку 😘\n",
+                f'Ви ({last_name}) підписалися на рекламну розсилку 😘\n',
             )
 
     if is_all_false:
-        print("Ви не підписалися ні на які розсилки 😭")
+        print('Ви не підписалися ні на які розсилки 😭')
 
 
 def show_all_users():
@@ -57,14 +57,14 @@ def show_all_users():
     global subs_users
 
     for key, val in subs_users.items():
-        print(f"{key}:")
+        print(f'{key}:')
         for kluch, value in val.items():
-            print(f"\t{kluch}: {value}")
+            print(f'\t{kluch}: {value}')
         print()
 
 # фу
 def is_true(var):
-    if var == "y":
+    if var == 'y':
         return True
     else:
         return False
@@ -73,26 +73,26 @@ def is_true(var):
 while True:
     print()
 
-    number = int(input("1. Підписатися\n2. Подивитися всіх\n3. Вийти\n"))
+    number = int(input('1. Підписатися\n2. Подивитися всіх\n3. Вийти\n'))
 
     if number in range(1, 4):
         if number == 1:
             print()
-            email = input("Введіть електронну адресу\n")
+            email = input('Введіть електронну адресу\n')
             print()
 
-            last_name = input("Введіть прізвище\n")
-
-            print()
-
-            sub_news = input("Хочете отримувати останні новини? (y/n)\n")
+            last_name = input('Введіть прізвище\n')
 
             print()
 
-            sub_changes = input("Хочете отримувати чендж лог нових оновлень? (y/n)\n")
+            sub_news = input('Хочете отримувати останні новини? (y/n)\n')
 
             print()
-            advers = input("Хочете отримувати рекламну розсилку? (y/n)\n")
+
+            sub_changes = input('Хочете отримувати чендж лог нових оновлень? (y/n)\n')
+
+            print()
+            advers = input('Хочете отримувати рекламну розсилку? (y/n)\n')
             print()
 
             sub_news = is_true(sub_news)
@@ -120,4 +120,4 @@ while True:
             break
     else:
         print()
-        print("Некорректна комманда")
+        print('Некорректна комманда')
