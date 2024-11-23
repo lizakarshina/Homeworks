@@ -1,0 +1,3 @@
+John,63.25
+Alice,68.5
+Michael,60.75
