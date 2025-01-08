@@ -1,0 +1,2 @@
+Write several lines of information in English into a text file and display
+the Ukrainian translation of this information on the screen

@@ -1,11 +1,14 @@
 from aiogram import F, Router
+from aiogram.filters.callback_data import CallbackData
 from aiogram.types import Message
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 
 import app.keybards as kb
 import app.tovars as tovars
+
+import random
 
 router = Router()
 
@@ -19,10 +22,22 @@ class Add(StatesGroup):
 class Delete(StatesGroup):
     id = State()
     confirm = State()
-    
+
+
+
+def random_quote():
+    list = []
+    with open('app/quotes.txt', 'r', encoding='utf-8') as file:
+        for line in file:
+            list.append(line)
+    return random.choice(list)
+
 @router.message(CommandStart())
 async def start(message: Message):
-    await message.answer('Вітаю, це бот твого складу, щоб продовжити натисни на одну з кнопок нижче', reply_markup=kb.main)
+
+    await message.answer(f'Привіт, новий користувач {message.from_user.full_name}')
+
+    # await message.answer('Вітаю, це бот твого складу, щоб продовжити натисни на одну з кнопок нижче', reply_markup=kb.main)
 
 
 @router.message(F.text == 'Переглянути товари')
@@ -106,4 +121,25 @@ async def delete_confirm(message: Message, state: FSMContext):
     elif data['confirm'] == 'Ні':
         await message.answer('Буває', reply_markup=kb.main)
         await state.clear()
-        
+
+
+@router.message(Command(commands=['help']))
+async def help(message: Message):
+    await message.answer('Чим можу допомогти?')
+
+
+
+@router.message(Command(commands=['saysomething']))
+async def quote(message: Message):
+    quote = random_quote()
+    await message.answer(quote)
+
+
+@router.message(F.text == 'доброго ранку')
+async def reply(message: Message):
+    await message.reply('Доброго ранку, чим будеш снідати?')
+
+
+@router.message()
+async def echo(message: Message):
+    await message.reply(message.text)
